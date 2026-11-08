@@ -1,0 +1,657 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#24344A">
+<title>Clássica Odontologia Integrada</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Clássica Odontologia Integrada — dentista em Sarandi-PR. Avaliação, estética, implantes, ortodontia e odontopediatria. Agende pelo WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700&display=swap">
+<style>
+/* Layout: consultório claro (cinza-mármore) com faixas azul-marinho; o anel da logo é o fio condutor — abertura, progresso de rolagem e marcadores. */
+:root{
+  --navy:#24344A; --navy-deep:#172334; --blue:#1F5A8A; --gold:#C4925A; --gold-soft:#EBDCC8;
+  --ring:#D3D7DC; --paper:#F4F5F6; --white:#FFFFFF; --ink:#1D2735; --muted:#5D6878; --line:#E1E4E8;
+  --on-navy:#E9EDF2; --on-navy-muted:#A9B4C2;
+  --f-brand:"Quicksand","Nunito Sans",system-ui,sans-serif;
+  --f-body:"Nunito Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --wrap:1180px; --r:22px;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.65;overflow-x:clip;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--white)}
+img,video{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--f-brand);font-weight:600;line-height:1.12;margin:0;text-wrap:balance;color:var(--navy)}
+p{margin:0}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--f-brand);font-weight:600;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:.6em}
+.eyebrow::before{content:"";width:26px;height:2px;background:currentColor;border-radius:2px}
+.btn{display:inline-flex;align-items:center;gap:.6em;font-family:var(--f-brand);font-weight:700;font-size:1rem;text-decoration:none;padding:.95em 1.5em;border-radius:999px;border:2px solid transparent;transition:transform .25s,background .25s,color .25s,box-shadow .25s;cursor:pointer}
+.btn:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.btn-primary{background:var(--navy);color:var(--white)}
+.btn-primary:hover{background:var(--blue);transform:translateY(-2px);box-shadow:0 12px 28px -12px rgba(31,90,138,.6)}
+.btn-ghost{border-color:var(--navy);color:var(--navy);background:transparent}
+.btn-ghost:hover{background:var(--navy);color:var(--white)}
+.btn-gold{background:var(--gold);color:var(--white)}
+.btn-gold:hover{background:#B07D45;transform:translateY(-2px)}
+.btn svg{width:20px;height:20px;flex:none}
+
+/* ===== Abertura ===== */
+#intro{position:fixed;inset:0;z-index:100;background:var(--white);display:grid;place-items:center;transition:clip-path 1s cubic-bezier(.77,0,.18,1);clip-path:inset(0 0 0 0)}
+#intro.out{clip-path:inset(0 0 100% 0)}
+#intro.gone{display:none}
+.intro-logo{display:grid;justify-items:center;gap:6px;text-align:center}
+.intro-logo svg{width:132px;height:132px;overflow:visible}
+.intro-logo .arc{fill:none;stroke-linecap:round;stroke-width:9}
+.intro-logo .arc-g{stroke:var(--ring);stroke-dasharray:1;stroke-dashoffset:1;animation:draw 1.1s .15s cubic-bezier(.65,0,.35,1) forwards}
+.intro-logo .arc-b{stroke:var(--blue);stroke-dasharray:1;stroke-dashoffset:1;animation:draw .6s 1.05s cubic-bezier(.65,0,.35,1) forwards}
+.intro-logo svg g{transform-origin:center;animation:spin 2.4s cubic-bezier(.65,0,.35,1) forwards}
+.intro-word{font-family:var(--f-brand);font-weight:600;font-size:clamp(2.6rem,9vw,4.2rem);color:var(--navy);line-height:1;margin-top:10px;overflow:hidden}
+.intro-word span{display:inline-block;transform:translateY(110%);animation:up .8s cubic-bezier(.2,.8,.2,1) forwards}
+.intro-sub{font-family:var(--f-brand);font-weight:600;color:var(--gold);font-size:clamp(1rem,3.4vw,1.35rem);letter-spacing:.5em;opacity:0;animation:track 1.2s 1.6s cubic-bezier(.2,.8,.2,1) forwards;white-space:nowrap}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes spin{from{transform:rotate(-120deg)}to{transform:rotate(0)}}
+@keyframes up{to{transform:none}}
+@keyframes track{to{opacity:1;letter-spacing:.04em}}
+
+/* ===== Cabeçalho ===== */
+header.site{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(255,255,255,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:border-color .3s,box-shadow .3s}
+header.site.scrolled{border-color:var(--line);box-shadow:0 8px 30px -22px rgba(23,35,52,.5)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:20px;height:74px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand svg{width:40px;height:40px;flex:none}
+.brand .arc{fill:none;stroke-linecap:round;stroke-width:10}
+.brand-text{display:grid;line-height:1}
+.brand-text b{font-family:var(--f-brand);font-weight:600;font-size:1.45rem;color:var(--navy)}
+.brand-text small{font-family:var(--f-brand);font-weight:600;font-size:.62rem;color:var(--gold);letter-spacing:.03em;margin-top:3px}
+.menu{display:flex;gap:28px;list-style:none;margin:0;padding:0}
+.menu a{text-decoration:none;font-family:var(--f-brand);font-weight:600;font-size:.95rem;color:var(--ink);position:relative;padding:6px 0}
+.menu a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.menu a:hover::after{transform:scaleX(1)}
+.nav .btn{padding:.7em 1.2em;font-size:.92rem}
+.burger{display:none;background:none;border:0;width:44px;height:44px;padding:10px;cursor:pointer}
+.burger span{display:block;height:2px;background:var(--navy);margin:6px 0;border-radius:2px;transition:transform .3s,opacity .3s}
+@media (max-width:920px){
+  .menu{position:fixed;left:0;right:0;top:calc(74px + env(safe-area-inset-top,0px));flex-direction:column;gap:0;background:var(--white);padding:8px max(20px,env(safe-area-inset-left,0px)) 20px;border-bottom:1px solid var(--line);transform:translateY(-8px);opacity:0;pointer-events:none;transition:.3s}
+  .menu.open{opacity:1;transform:none;pointer-events:auto}
+  .menu a{display:block;padding:14px 0;border-bottom:1px solid var(--line);font-size:1.05rem}
+  .nav .btn{display:none}
+  .burger{display:block}
+}
+
+/* ===== Hero ===== */
+.hero{position:relative;overflow:hidden;padding-block:clamp(40px,7vw,90px) clamp(60px,8vw,110px)}
+.hero-ring{position:absolute;right:-180px;top:-120px;width:720px;height:720px;pointer-events:none;opacity:.55}
+.hero-ring .arc{fill:none;stroke-linecap:round;stroke-width:3}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(30px,5vw,70px);align-items:center;position:relative}
+.hero-copy{min-width:0;display:grid;gap:22px}
+.hero h1{font-size:clamp(2.3rem,5.4vw,4.1rem);font-weight:600;letter-spacing:-.01em}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero-lead{font-size:1.15rem;color:var(--muted);max-width:52ch}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+.hero-meta{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:10px;color:var(--muted);font-size:.95rem}
+.hero-meta span{display:inline-flex;align-items:center;gap:8px}
+.hero-meta i{width:8px;height:8px;border-radius:50%;background:var(--gold);display:inline-block}
+.hero-media{position:relative;justify-self:center;width:min(100%,400px)}
+.video-frame{position:relative;border-radius:200px 200px 28px 28px;overflow:hidden;aspect-ratio:9/14;background:var(--navy);box-shadow:0 40px 80px -40px rgba(23,35,52,.65)}
+.video-frame video{width:100%;height:100%;object-fit:cover}
+.video-frame::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(23,35,52,.45))}
+.chip{position:absolute;z-index:2;background:var(--white);border-radius:16px;padding:12px 16px;box-shadow:0 18px 40px -18px rgba(23,35,52,.45);display:flex;align-items:center;gap:12px;font-family:var(--f-brand);font-weight:600;font-size:.9rem;color:var(--navy);line-height:1.25}
+.chip small{display:block;color:var(--muted);font-weight:500;font-size:.78rem}
+.chip svg{width:34px;height:34px;flex:none}
+.chip.c1{left:-46px;top:22%;animation:float 6s ease-in-out infinite}
+.chip.c2{right:-30px;bottom:12%;animation:float 6s 1.5s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-10px)}}
+@media (max-width:880px){
+  .hero-grid{grid-template-columns:1fr}
+  .hero-media{width:min(100%,360px)}
+  .chip.c1{left:-8px}.chip.c2{right:-8px}
+  .hero-ring{width:460px;height:460px;right:-200px;top:-80px}
+}
+
+/* ===== Faixa ===== */
+.marquee{background:var(--navy);color:var(--on-navy);overflow:hidden;padding-block:20px}
+.marquee-track{display:flex;gap:46px;width:max-content;animation:marq 38s linear infinite;font-family:var(--f-brand);font-weight:600;font-size:1.15rem;white-space:nowrap}
+.marquee-track span{display:inline-flex;align-items:center;gap:46px}
+.marquee-track span::after{content:"";width:9px;height:9px;border-radius:50%;border:2px solid var(--gold)}
+@keyframes marq{to{transform:translateX(-50%)}}
+
+/* ===== Seções ===== */
+section{scroll-margin-top:84px}
+.sec{padding-block:clamp(70px,9vw,120px)}
+.sec-head{display:grid;gap:14px;max-width:720px;margin-bottom:48px}
+.sec-head h2{font-size:clamp(1.9rem,3.8vw,2.9rem)}
+.sec-head p{color:var(--muted);font-size:1.08rem}
+
+.about{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,70px);align-items:center}
+.about-photo{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:1/1}
+.about-photo img{width:100%;height:118%;object-fit:cover;object-position:center 30%;will-change:transform}
+.about-photo figcaption{position:absolute;left:16px;bottom:16px;background:rgba(255,255,255,.92);border-radius:12px;padding:8px 14px;font-family:var(--f-brand);font-weight:600;font-size:.85rem;color:var(--navy)}
+.about-copy{display:grid;gap:20px;min-width:0}
+.about-copy h2{font-size:clamp(1.9rem,3.6vw,2.7rem)}
+.about-copy>p{color:var(--muted);font-size:1.08rem}
+.pillars{display:grid;grid-template-columns:1fr 1fr;gap:18px 26px;margin-top:8px}
+.pillar{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start}
+.pillar svg{width:30px;height:30px;margin-top:2px}
+.pillar b{font-family:var(--f-brand);font-weight:700;color:var(--navy);display:block;line-height:1.3}
+.pillar span{color:var(--muted);font-size:.93rem;line-height:1.5}
+@media (max-width:880px){.about{grid-template-columns:1fr}.pillars{grid-template-columns:1fr}}
+
+/* Tratamentos */
+.treat{background:var(--white)}
+.treat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{position:relative;border:1px solid var(--line);border-radius:var(--r);padding:28px 26px 26px;background:var(--white);display:grid;gap:12px;align-content:start;transition:transform .35s,box-shadow .35s,border-color .35s;overflow:hidden}
+.card:hover{transform:translateY(-6px);border-color:transparent;box-shadow:0 26px 50px -30px rgba(23,35,52,.55)}
+.card svg{width:44px;height:44px;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.card:hover svg{transform:rotate(90deg)}
+.card h3{font-size:1.28rem}
+.card p{color:var(--muted);font-size:.97rem;line-height:1.55}
+.card::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:100%;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .45s}
+.card:hover::after{transform:scaleX(1)}
+@media (max-width:980px){.treat-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.treat-grid{grid-template-columns:1fr}}
+
+/* Vídeo com rolagem */
+.scrub{position:relative;height:320vh;background:var(--navy-deep);color:var(--on-navy)}
+.scrub-sticky{position:sticky;top:calc(74px + env(safe-area-inset-top,0px));height:calc(100vh - 74px);height:calc(100svh - 74px - env(safe-area-inset-top,0px));display:flex;align-items:center;overflow:hidden}
+.scrub-grid{display:grid;grid-template-columns:auto 1fr;gap:clamp(30px,6vw,90px);align-items:center;width:100%}
+.scrub-video{height:min(78vh,700px);aspect-ratio:600/882;border-radius:26px;overflow:hidden;position:relative;background:#0F1825;box-shadow:0 40px 90px -40px rgba(0,0,0,.8)}
+.scrub-video video{width:100%;height:100%;object-fit:cover}
+.scrub-copy{min-width:0;display:grid;gap:26px}
+.scrub-copy .eyebrow{color:var(--gold)}
+.scrub-copy h2{color:var(--white);font-size:clamp(1.9rem,3.8vw,2.9rem)}
+.steps-cap{position:relative;min-height:170px}
+.cap{position:absolute;inset:0 auto auto 0;display:grid;gap:10px;opacity:0;transform:translateY(24px);transition:opacity .5s,transform .5s;max-width:46ch}
+.cap.on{opacity:1;transform:none}
+.cap b{font-family:var(--f-brand);font-size:1.5rem;font-weight:600;color:var(--white)}
+.cap p{color:var(--on-navy-muted)}
+.scrub-bar{display:flex;gap:8px}
+.scrub-bar i{height:4px;flex:1;max-width:90px;border-radius:4px;background:rgba(255,255,255,.18);overflow:hidden;position:relative}
+.scrub-bar i::after{content:"";position:absolute;inset:0;background:var(--gold);transform:scaleX(var(--p,0));transform-origin:left}
+.scroll-hint{font-size:.85rem;color:var(--on-navy-muted);display:flex;align-items:center;gap:8px}
+@media (max-width:820px){
+  .scrub{height:300vh}
+  .scrub-grid{grid-template-columns:1fr;justify-items:center;gap:0}
+  .scrub-video{height:auto;width:100%;max-width:440px;max-height:calc(100svh - 120px);aspect-ratio:600/882}
+  .scrub-copy{position:absolute;left:0;right:0;bottom:0;padding:90px max(24px,env(safe-area-inset-left,0px)) 28px;background:linear-gradient(180deg,transparent,rgba(15,24,37,.92) 45%);gap:14px}
+  .scrub-copy h2,.scrub-copy .eyebrow{display:none}
+  .steps-cap{min-height:120px}
+  .cap b{font-size:1.25rem}
+  .cap p{font-size:.95rem}
+}
+
+/* Tour 360 */
+.tour{background:var(--navy);color:var(--on-navy)}
+.tour .sec-head h2{color:var(--white)}
+.tour .sec-head p{color:var(--on-navy-muted)}
+.tour-tabs{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px}
+.tab{font-family:var(--f-brand);font-weight:700;font-size:.92rem;padding:.65em 1.15em;border-radius:999px;border:1.5px solid rgba(255,255,255,.25);background:transparent;color:var(--on-navy);display:inline-flex;align-items:center;gap:8px}
+.tab.active{background:var(--gold);border-color:var(--gold);color:var(--white)}
+.tab[disabled]{opacity:.55;cursor:not-allowed}
+.tab small{font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;background:rgba(255,255,255,.12);padding:2px 7px;border-radius:999px}
+.pano-wrap{position:relative;border-radius:26px;overflow:hidden;box-shadow:0 40px 90px -40px rgba(0,0,0,.7);border:1px solid rgba(255,255,255,.12)}
+#pano{width:100%;height:clamp(360px,62vh,600px);background:#0F1825}
+.pano-badge{position:absolute;left:18px;top:18px;z-index:5;display:flex;align-items:center;gap:10px;background:rgba(15,24,37,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-radius:999px;padding:8px 16px 8px 8px;font-family:var(--f-brand);font-weight:700;font-size:.88rem;color:var(--white);pointer-events:none}
+.pano-badge b{width:30px;height:30px;border-radius:50%;background:var(--gold);display:grid;place-items:center;font-size:.72rem}
+.pano-hint{position:absolute;right:18px;bottom:18px;z-index:5;background:rgba(15,24,37,.72);border-radius:999px;padding:8px 14px;font-size:.82rem;color:var(--on-navy);pointer-events:none;transition:opacity .4s}
+.tour-foot{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px}
+.tour-foot div{border-top:1px solid rgba(255,255,255,.18);padding-top:16px;color:var(--on-navy-muted);font-size:.95rem}
+.tour-foot b{display:block;color:var(--white);font-family:var(--f-brand);font-size:1.05rem;margin-bottom:4px}
+@media (max-width:760px){.tour-foot{grid-template-columns:1fr}}
+.pnlm-hotspot.clinic-spot{width:22px;height:22px;border-radius:50%;background:var(--gold);border:3px solid var(--white);box-shadow:0 0 0 0 rgba(196,146,90,.7);animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 16px rgba(196,146,90,0)}100%{box-shadow:0 0 0 0 rgba(196,146,90,0)}}
+
+/* Primeira consulta */
+.flow{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;counter-reset:st}
+.flow li{list-style:none;display:grid;gap:10px;position:relative;padding-top:56px}
+.flow li::before{counter-increment:st;content:counter(st);position:absolute;top:0;left:0;width:42px;height:42px;border-radius:50%;border:2px solid var(--gold);display:grid;place-items:center;font-family:var(--f-brand);font-weight:700;color:var(--gold)}
+.flow li::after{content:"";position:absolute;top:21px;left:54px;right:-14px;height:2px;background:linear-gradient(90deg,var(--ring),transparent)}
+.flow li:last-child::after{display:none}
+.flow b{font-family:var(--f-brand);font-size:1.2rem;color:var(--navy)}
+.flow p{color:var(--muted);font-size:.97rem}
+.flow{padding:0;margin:0}
+@media (max-width:760px){.flow{grid-template-columns:1fr}.flow li::after{display:none}}
+
+/* Contato */
+.contact{background:var(--white)}
+.contact-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(24px,4vw,50px);align-items:stretch}
+.info{display:grid;gap:0;align-content:start}
+.info-row{display:grid;grid-template-columns:44px 1fr;gap:14px;padding:20px 0;border-bottom:1px solid var(--line);align-items:start}
+.info-row:first-child{padding-top:0}
+.info-row svg{width:40px;height:40px}
+.info-row>div{min-width:0;overflow-wrap:anywhere}
+.info-row b{font-family:var(--f-brand);color:var(--navy);display:block;font-size:1.05rem}
+.info-row span,.info-row a{color:var(--muted)}
+.info-row a{text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+.hours{display:grid;grid-template-columns:auto 1fr;gap:4px 22px;color:var(--muted);font-variant-numeric:tabular-nums}
+.copy-btn{margin-left:8px;font:600 .78rem var(--f-brand);border:1px solid var(--line);background:var(--paper);color:var(--navy);border-radius:999px;padding:3px 10px;cursor:pointer;vertical-align:middle}
+.map-card{position:relative;border-radius:var(--r);overflow:hidden;background:var(--navy);min-height:380px;display:grid;align-content:end;padding:28px;color:var(--white)}
+.map-card canvas{position:absolute;inset:0;width:100%;height:100%}
+.map-card .pin{position:absolute;left:56%;top:38%;transform:translate(-50%,-100%);display:grid;justify-items:center;gap:4px}
+.map-card .pin span{background:var(--white);color:var(--navy);font:700 .8rem var(--f-brand);padding:6px 12px;border-radius:999px;white-space:nowrap;box-shadow:0 10px 24px -10px rgba(0,0,0,.6)}
+.map-card .pin i{width:18px;height:18px;border-radius:50%;background:var(--gold);border:3px solid var(--white);animation:pulse 2s infinite}
+.map-card>div.map-cta{position:relative;display:grid;gap:12px;background:rgba(15,24,37,.78);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-radius:16px;padding:18px}
+.map-cta b{font-family:var(--f-brand);font-size:1.1rem}
+.map-cta span{color:var(--on-navy-muted);font-size:.93rem}
+.map-cta .btn{justify-self:start}
+@media (max-width:880px){.contact-grid{grid-template-columns:1fr}}
+
+/* CTA final + rodapé */
+.cta-band{background:var(--navy-deep);color:var(--on-navy);position:relative;overflow:hidden}
+.cta-band .wrap{padding-block:clamp(60px,8vw,96px);display:grid;justify-items:start;gap:20px;position:relative}
+.cta-band h2{color:var(--white);font-size:clamp(2rem,4.4vw,3.2rem);max-width:18ch}
+.cta-band p{color:var(--on-navy-muted);max-width:52ch}
+.cta-band svg.bg{position:absolute;right:-120px;top:50%;width:520px;height:520px;transform:translateY(-50%);opacity:.5}
+.cta-band svg.bg .arc{fill:none;stroke-linecap:round;stroke-width:4}
+footer{background:var(--navy-deep);color:var(--on-navy-muted);border-top:1px solid rgba(255,255,255,.08);font-size:.9rem}
+footer .wrap{padding-block:28px;display:flex;flex-wrap:wrap;gap:12px 30px;justify-content:space-between;align-items:center}
+footer a{color:var(--on-navy);text-decoration:none}
+footer a:hover{color:var(--gold)}
+
+/* WhatsApp flutuante + progresso */
+.wa-float{position:fixed;right:calc(20px + env(safe-area-inset-right,0px));bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:40;width:60px;height:60px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 14px 30px -10px rgba(0,0,0,.45);transition:transform .25s}
+.wa-float:hover{transform:scale(1.08)}
+.wa-float svg{width:32px;height:32px}
+.progress-ring{position:fixed;left:calc(20px + env(safe-area-inset-left,0px));bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:40;width:52px;height:52px;border-radius:50%;background:var(--white);box-shadow:0 10px 26px -12px rgba(23,35,52,.5);display:grid;place-items:center;border:0;cursor:pointer;opacity:0;transform:scale(.8);transition:opacity .3s,transform .3s;pointer-events:none}
+.progress-ring.show{opacity:1;transform:none;pointer-events:auto}
+.progress-ring svg{width:38px;height:38px}
+.progress-ring .arc{fill:none;stroke-linecap:round;stroke-width:9}
+
+/* Revelação ao rolar */
+.js .reveal{opacity:0;transform:translateY(36px);transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1)}
+.js .reveal.in{opacity:1;transform:none}
+.js .reveal[data-d="1"]{transition-delay:.1s}.js .reveal[data-d="2"]{transition-delay:.2s}.js .reveal[data-d="3"]{transition-delay:.3s}
+.js .hero .reveal{transition-delay:calc(var(--hd,0) * 1s)}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  html{scroll-behavior:auto}
+  .js .reveal{opacity:1;transform:none}
+}
+
+/* Pannellum 2.5.6, https://github.com/mpetroff/pannellum */
+.pnlm-container{margin:0;padding:0;overflow:hidden;position:relative;cursor:default;width:100%;height:100%;font-family:Helvetica,"Nimbus Sans L","Liberation Sans",Arial,sans-serif;background:#f4f4f4 url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2267%22%20height%3D%22100%22%20viewBox%3D%220%200%2067%20100%22%3E%0A%3Cpath%20stroke%3D%22%23ccc%22%20fill%3D%22none%22%20d%3D%22M33.5%2C50%2C0%2C63%2C33.5%2C75%2C67%2C63%2C33.5%2C50m-33.5-50%2C67%2C25m-0.5%2C0%2C0%2C75m-66.5-75%2C67-25m-33.5%2C75%2C0%2C25m0-100%2C0%2C50%22%2F%3E%0A%3C%2Fsvg%3E%0A') repeat;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-o-user-select:none;-ms-user-select:none;user-select:none;outline:0;line-height:1.4;contain:content}.pnlm-container *{box-sizing:content-box}.pnlm-ui{position:absolute;width:100%;height:100%;z-index:1}.pnlm-grab{cursor:grab;cursor:url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%2226%22%20width%3D%2226%22%3E%0A%3Cpath%20stroke%3D%22%23000%22%20stroke-width%3D%221px%22%20fill%3D%22%23fff%22%20d%3D%22m15.3%2020.5s6.38-6.73%204.64-8.24-3.47%201.01-3.47%201.01%203.61-5.72%201.41-6.49c-2.2-0.769-3.33%204.36-3.33%204.36s0.873-5.76-1.06-5.76-1.58%205.39-1.58%205.39-0.574-4.59-2.18-4.12c-1.61%200.468-0.572%205.51-0.572%205.51s-1.58-4.89-2.93-3.79c-1.35%201.11%200.258%205.25%200.572%206.62%200.836%202.43%202.03%202.94%202.17%205.55%22%2F%3E%0A%3C%2Fsvg%3E%0A') 12 8,default}.pnlm-grabbing{cursor:grabbing;cursor:url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%2226%22%20width%3D%2226%22%3E%0A%3Cpath%20stroke%3D%22%23000%22%20stroke-width%3D%221px%22%20fill%3D%22%23fff%22%20d%3D%22m15.3%2020.5s5.07-5.29%203.77-6.74c-1.31-1.45-2.53%200.14-2.53%200.14s2.74-3.29%200.535-4.06c-2.2-0.769-2.52%201.3-2.52%201.3s0.81-2.13-1.12-2.13-1.52%201.77-1.52%201.77-0.261-1.59-1.87-1.12c-1.61%200.468-0.874%202.17-0.874%202.17s-0.651-1.55-2-0.445c-1.35%201.11-0.68%202.25-0.365%203.62%200.836%202.43%202.03%202.94%202.17%205.55%22%2F%3E%0A%3C%2Fsvg%3E%0A') 12 8,default}.pnlm-sprite{background-image:url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2226%22%20height%3D%22208%22%3E%0A%3Ccircle%20fill-opacity%3D%22.78%22%20cy%3D%22117%22%20cx%3D%2213%22%20r%3D%2211%22%20fill%3D%22%23fff%22%2F%3E%0A%3Ccircle%20fill-opacity%3D%22.78%22%20cy%3D%22143%22%20cx%3D%2213%22%20r%3D%2211%22%20fill%3D%22%23fff%22%2F%3E%0A%3Ccircle%20cy%3D%22169%22%20cx%3D%2213%22%20r%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%23000%22%20stroke-width%3D%222%22%2F%3E%0A%3Ccircle%20cy%3D%22195%22%20cx%3D%2213%22%20r%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%23000%22%20stroke-width%3D%222%22%2F%3E%0A%3Ccircle%20cx%3D%2213%22%20cy%3D%22195%22%20r%3D%222.5%22%2F%3E%0A%3Cpath%20d%3D%22m5%2083v6h2v-4h4v-2zm10%200v2h4v4h2v-6zm-5%205v6h6v-6zm-5%205v6h6v-2h-4v-4zm14%200v4h-4v2h6v-6z%22%2F%3E%0A%3Cpath%20d%3D%22m13%20110a7%207%200%200%200%20-7%207%207%207%200%200%200%207%207%207%207%200%200%200%207%20-7%207%207%200%200%200%20-7%20-7zm-1%203h2v2h-2zm0%203h2v5h-2z%22%2F%3E%0A%3Cpath%20d%3D%22m5%2057v6h2v-4h4v-2zm10%200v2h4v4h2v-6zm-10%2010v6h6v-2h-4v-4zm14%200v4h-4v2h6v-6z%22%2F%3E%0A%3Cpath%20d%3D%22m17%2038v2h-8v-2z%22%2F%3E%0A%3Cpath%20d%3D%22m12%209v3h-3v2h3v3h2v-3h3v-2h-3v-3z%22%2F%3E%0A%3Cpath%20d%3D%22m13%20136-6.125%206.125h4.375v7.875h3.5v-7.875h4.375z%22%2F%3E%0A%3Cpath%20d%3D%22m10.428%20173.33v-5.77l5-2.89v5.77zm1-1.73%203-1.73-3.001-1.74z%22%2F%3E%0A%3C%2Fsvg%3E%0A')}.pnlm-container:-moz-full-screen{height:100%!important;width:100%!important;position:static!important}.pnlm-container:-webkit-full-screen{height:100%!important;width:100%!important;position:static!important}.pnlm-container:-ms-fullscreen{height:100%!important;width:100%!important;position:static!important}.pnlm-container:fullscreen{height:100%!important;width:100%!important;position:static!important}.pnlm-render-container{cursor:inherit;position:absolute;height:100%;width:100%}.pnlm-controls{margin-top:4px;background-color:#fff;border:1px solid #999;border-color:rgba(0,0,0,0.4);border-radius:3px;cursor:pointer;z-index:2;-webkit-transform:translateZ(9999px);transform:translateZ(9999px)}.pnlm-control:hover{background-color:#f8f8f8}.pnlm-controls-container{position:absolute;top:0;left:4px;z-index:1}.pnlm-zoom-controls{width:26px;height:52px}.pnlm-zoom-in{width:100%;height:50%;position:absolute;top:0;border-radius:3px 3px 0 0}.pnlm-zoom-out{width:100%;height:50%;position:absolute;bottom:0;background-position:0 -26px;border-top:1px solid #ddd;border-top-color:rgba(0,0,0,0.10);border-radius:0 0 3px 3px}.pnlm-fullscreen-toggle-button,.pnlm-orientation-button,.pnlm-hot-spot-debug-indicator{width:26px;height:26px}.pnlm-hot-spot-debug-indicator{position:absolute;top:50%;left:50%;width:26px;height:26px;margin:-13px 0 0 -13px;background-color:rgba(255,255,255,0.5);border-radius:13px;display:none}.pnlm-orientation-button-inactive{background-position:0 -156px}.pnlm-orientation-button-active{background-position:0 -182px}.pnlm-fullscreen-toggle-button-inactive{background-position:0 -52px}.pnlm-fullscreen-toggle-button-active{background-position:0 -78px}.pnlm-panorama-info{position:absolute;bottom:4px;background-color:rgba(0,0,0,0.7);border-radius:0 3px 3px 0;padding-right:10px;color:#fff;text-align:left;display:none;z-index:2;-webkit-transform:translateZ(9999px);transform:translateZ(9999px)}.pnlm-title-box{position:relative;font-size:20px;display:table;padding-left:5px;margin-bottom:3px}.pnlm-author-box{position:relative;font-size:12px;display:table;padding-left:5px}.pnlm-load-box{position:absolute;top:50%;left:50%;width:200px;height:150px;margin:-75px 0 0 -100px;background-color:rgba(0,0,0,0.7);border-radius:3px;text-align:center;font-size:20px;display:none;color:#fff}.pnlm-load-box p{margin:20px 0}.pnlm-lbox{position:absolute;top:50%;left:50%;width:20px;height:20px;margin:-10px 0 0 -10px;display:none}.pnlm-loading{animation-duration:1.5s;-webkit-animation-duration:1.5s;animation-name:pnlm-mv;-webkit-animation-name:pnlm-mv;animation-iteration-count:infinite;-webkit-animation-iteration-count:infinite;animation-timing-function:linear;-webkit-animation-timing-function:linear;height:10px;width:10px;background-color:#fff;position:relative}@keyframes pnlm-mv{from{left:0;top:0}25%{left:10px;top:0}50%{left:10px;top:10px}75%{left:0;top:10px}to{left:0;top:0}}@-webkit-keyframes pnlm-mv{from{left:0;top:0}25%{left:10px;top:0}50%{left:10px;top:10px}75%{left:0;top:10px}to{left:0;top:0}}.pnlm-load-button{position:absolute;top:50%;left:50%;width:200px;height:100px;margin:-50px 0 0 -100px;background-color:rgba(0,0,0,.7);border-radius:3px;text-align:center;font-size:20px;display:table;color:#fff;cursor:pointer}.pnlm-load-button:hover{background-color:rgba(0,0,0,.8)}.pnlm-load-button p{display:table-cell;vertical-align:middle}.pnlm-info-box{font-size:15px;position:absolute;top:50%;left:50%;width:200px;height:150px;margin:-75px 0 0 -100px;background-color:#000;border-radius:3px;display:table;text-align:center;color:#fff;table-layout:fixed}.pnlm-info-box a,.pnlm-author-box a{color:#fff;word-wrap:break-word;overflow-wrap:break-word}.pnlm-info-box p{display:table-cell;vertical-align:middle;padding:0 5px 0 5px}.pnlm-error-msg{display:none}.pnlm-about-msg{font-size:11px;line-height:11px;color:#fff;padding:5px 8px 5px 8px;background:rgba(0,0,0,0.7);border-radius:3px;position:absolute;top:50px;left:50px;display:none;opacity:0;-moz-transition:opacity .3s ease-in-out;-webkit-transition:opacity .3s ease-in-out;-o-transition:opacity .3s ease-in-out;-ms-transition:opacity .3s ease-in-out;transition:opacity .3s ease-in-out;z-index:1}.pnlm-about-msg a:link,.pnlm-about-msg a:visited{color:#fff}.pnlm-about-msg a:hover,.pnlm-about-msg a:active{color:#eee}.pnlm-hotspot-base{position:absolute;visibility:hidden;cursor:default;vertical-align:middle;top:0;z-index:1}.pnlm-hotspot{height:26px;width:26px;border-radius:13px}.pnlm-hotspot:hover{background-color:rgba(255,255,255,0.2)}.pnlm-hotspot.pnlm-info{background-position:0 -104px}.pnlm-hotspot.pnlm-scene{background-position:0 -130px}div.pnlm-tooltip span{visibility:hidden;position:absolute;border-radius:3px;background-color:rgba(0,0,0,0.7);color:#fff;text-align:center;max-width:200px;padding:5px 10px;margin-left:-220px;cursor:default}div.pnlm-tooltip:hover span{visibility:visible}div.pnlm-tooltip:hover span:after{content:'';position:absolute;width:0;height:0;border-width:10px;border-style:solid;border-color:rgba(0,0,0,0.7) transparent transparent transparent;bottom:-20px;left:-10px;margin:0 50%}.pnlm-compass{position:absolute;width:50px;height:50px;right:4px;bottom:4px;border-radius:25px;background-image:url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%2250%22%20width%3D%2250%22%3E%0A%3Cpath%20d%3D%22m24.5078%206-3.2578%2018h7.5l-3.25781-18h-0.984376zm-3.2578%2020%203.2578%2018h0.9844l3.2578-18h-7.5zm1.19531%200.9941h5.10938l-2.5547%2014.1075-2.5547-14.1075z%22%2F%3E%0A%3C%2Fsvg%3E%0A');cursor:default;display:none}.pnlm-world{position:absolute;left:50%;top:50%}.pnlm-face{position:absolute;-webkit-transform-origin:0 0;transform-origin:0 0}.pnlm-dragfix,.pnlm-preview-img{position:absolute;height:100%;width:100%}.pnlm-preview-img{background-size:cover;background-position:center}.pnlm-lbar{width:150px;margin:0 auto;border:#fff 1px solid;height:6px}.pnlm-lbar-fill{background:#fff;height:100%;width:0}.pnlm-lmsg{font-size:12px}.pnlm-fade-img{position:absolute;top:0;left:0}.pnlm-pointer{cursor:pointer}
+.pnlm-container{font-family:var(--f-body)!important;background:#0F1825!important}
+.pnlm-load-box{background:rgba(15,24,37,.8)!important;border-radius:14px!important}
+</style>
+</head>
+<body>
+
+
+<!-- Símbolo da marca reutilizável -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="ring" viewBox="-50 -50 100 100">
+      <path class="arc" stroke="#D3D7DC" d="M35.2 14.2 A38 38 0 1 1 -9.8 -36.7" fill="none" stroke-width="10" stroke-linecap="round"/>
+      <path class="arc" stroke="#1F5A8A" d="M11.7 -36.1 A38 38 0 0 1 37.6 -5.3" fill="none" stroke-width="10" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="wa" viewBox="0 0 32 32"><path fill="currentColor" d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.9 2 7L3 29l6.4-2c2 1.1 4.3 1.7 6.6 1.7 7.2 0 13-5.7 13-12.8S23.2 3 16 3zm0 23.4c-2.1 0-4.1-.6-5.9-1.7l-.4-.3-3.8 1.2 1.2-3.7-.3-.4c-1.2-1.8-1.9-3.9-1.9-6C4.9 9.8 9.9 4.9 16 4.9s11.1 4.9 11.1 10.9S22.1 26.4 16 26.4zm6.1-8.1c-.3-.2-2-1-2.3-1.1-.3-.1-.5-.2-.8.2-.2.3-.9 1.1-1 1.3-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.7-1.7-1-.9-1.7-2-1.9-2.3-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.3.3-.6.1-.2 0-.4 0-.6l-1-2.5c-.3-.7-.6-.6-.8-.6h-.7c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.5c.2.2 2.4 3.6 5.8 5 .8.3 1.4.5 1.9.7.8.3 1.5.2 2.1.1.6-.1 2-.8 2.2-1.6.3-.8.3-1.4.2-1.6-.1-.1-.3-.2-.6-.4z"/></symbol>
+  </defs>
+</svg>
+
+<!-- Abertura -->
+<div id="intro" aria-hidden="true">
+  <div class="intro-logo">
+    <svg viewBox="-50 -50 100 100"><g>
+      <path class="arc arc-g" pathLength="1" d="M35.2 14.2 A38 38 0 1 1 -9.8 -36.7"/>
+      <path class="arc arc-b" pathLength="1" d="M11.7 -36.1 A38 38 0 0 1 37.6 -5.3"/>
+    </g></svg>
+    <div class="intro-word" aria-label="Clássica"></div>
+    <div class="intro-sub">Odontologia Integrada</div>
+  </div>
+</div>
+
+<header class="site" id="topo">
+  <div class="wrap nav">
+    <a class="brand" href="#inicio" aria-label="Clássica Odontologia Integrada — início">
+      <svg aria-hidden="true"><use href="#ring"/></svg>
+      <span class="brand-text"><b>Clássica</b><small>Odontologia Integrada</small></span>
+    </a>
+    <nav aria-label="Menu principal">
+      <ul class="menu" id="menu">
+        <li><a href="#clinica">A clínica</a></li>
+        <li><a href="#tratamentos">Tratamentos</a></li>
+        <li><a href="#espaco">Nosso espaço</a></li>
+        <li><a href="#tour">Tour 360°</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-primary" href="https://wa.me/5544991586088?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20na%20Cl%C3%A1ssica%20Odontologia." target="_blank" rel="noopener"><svg><use href="#wa"/></svg>Agendar</a>
+    <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="inicio">
+  <svg class="hero-ring" viewBox="-50 -50 100 100" aria-hidden="true">
+    <g id="heroRing">
+      <path class="arc" stroke="#D3D7DC" d="M35.2 14.2 A38 38 0 1 1 -9.8 -36.7"/>
+      <path class="arc" stroke="#C4925A" d="M11.7 -36.1 A38 38 0 0 1 37.6 -5.3"/>
+    </g>
+  </svg>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow reveal" style="--hd:.05">Dentista em Sarandi · PR</span>
+      <h1 class="reveal" style="--hd:.15">Seu sorriso cuidado por inteiro, <em>em um só lugar.</em></h1>
+      <p class="hero-lead reveal" style="--hd:.28">Na Clássica Odontologia Integrada, avaliação, planejamento e tratamento caminham juntos. Atendemos crianças, jovens e adultos com tecnologia, conforto e uma equipe que acompanha você do primeiro contato ao resultado.</p>
+      <div class="hero-ctas reveal" style="--hd:.4">
+        <a class="btn btn-primary" href="https://wa.me/5544991586088?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20na%20Cl%C3%A1ssica%20Odontologia." target="_blank" rel="noopener"><svg><use href="#wa"/></svg>Agendar avaliação</a>
+        <a class="btn btn-ghost" href="#tour">Ver a clínica em 360°</a>
+      </div>
+      <div class="hero-meta reveal" style="--hd:.5">
+        <span><i></i>Jardim Ouro Verde II</span>
+        <span><i></i>Atendimento pelo WhatsApp</span>
+        <span><i></i>Sábados das 9h às 12h</span>
+      </div>
+    </div>
+    <div class="hero-media reveal" style="--hd:.3">
+      <div class="video-frame">
+        <video id="heroVideo" src="video-hero.mp4" poster="poster-hero.jpg" autoplay muted loop playsinline preload="auto"></video>
+      </div>
+      <div class="chip c1"><svg aria-hidden="true"><use href="#ring"/></svg><div>Planejamento digital<small>exames na tela, com você</small></div></div>
+      <div class="chip c2"><svg aria-hidden="true"><use href="#ring"/></svg><div>Odontologia integrada<small>várias especialidades</small></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Clínica geral</span><span>Lentes de contato dental</span><span>Clareamento</span><span>Implantes</span><span>Ortodontia</span><span>Odontopediatria</span><span>Cirurgia de siso</span><span>Tratamento de canal</span><span>Próteses</span>
+    <span>Clínica geral</span><span>Lentes de contato dental</span><span>Clareamento</span><span>Implantes</span><span>Ortodontia</span><span>Odontopediatria</span><span>Cirurgia de siso</span><span>Tratamento de canal</span><span>Próteses</span>
+  </div>
+</div>
+
+<section class="sec" id="clinica">
+  <div class="wrap about">
+    <figure class="about-photo reveal" style="margin:0">
+      <img id="parallaxImg" src="equipe.jpg" alt="Dentistas da Clássica Odontologia na recepção da clínica" loading="lazy">
+      <figcaption>Nossa equipe na recepção da clínica</figcaption>
+    </figure>
+    <div class="about-copy">
+      <span class="eyebrow reveal">A Clássica</span>
+      <h2 class="reveal" data-d="1">Uma clínica pensada para cuidar da família toda</h2>
+      <p class="reveal" data-d="2">Odontologia integrada significa que você não precisa procurar um profissional diferente para cada etapa. Aqui o diagnóstico, o planejamento e o tratamento são feitos pela mesma equipe, conversando entre si e com você.</p>
+      <div class="pillars">
+        <div class="pillar reveal" data-d="1"><svg aria-hidden="true"><use href="#ring"/></svg><div><b>Avaliação completa</b><span>Entendemos sua história antes de propor qualquer tratamento.</span></div></div>
+        <div class="pillar reveal" data-d="2"><svg aria-hidden="true"><use href="#ring"/></svg><div><b>Planejamento digital</b><span>Exames de imagem explicados na tela, com clareza.</span></div></div>
+        <div class="pillar reveal" data-d="1"><svg aria-hidden="true"><use href="#ring"/></svg><div><b>Do infantil ao adulto</b><span>Atendimento para crianças, jovens, adultos e idosos.</span></div></div>
+        <div class="pillar reveal" data-d="2"><svg aria-hidden="true"><use href="#ring"/></svg><div><b>Ambiente acolhedor</b><span>Recepção confortável e consultórios bem equipados.</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec treat" id="tratamentos">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow reveal">Tratamentos</span>
+      <h2 class="reveal" data-d="1">Tudo o que o seu sorriso precisa</h2>
+      <p class="reveal" data-d="2">Da prevenção à reabilitação completa. Converse com a gente pelo WhatsApp e agende sua avaliação.</p>
+    </div>
+    <div class="treat-grid" id="treatGrid"></div>
+  </div>
+</section>
+
+<section class="scrub" id="espaco" aria-label="Conheça nosso espaço">
+  <div class="scrub-sticky">
+    <div class="wrap scrub-grid">
+      <div class="scrub-video">
+        <video id="scrubVideo" src="video-clinica.mp4" poster="poster-clinica.jpg" muted playsinline preload="auto"></video>
+      </div>
+      <div class="scrub-copy">
+        <span class="eyebrow">Nosso espaço</span>
+        <h2>Entre e conheça a Clássica</h2>
+        <div class="steps-cap">
+          <div class="cap on" data-from="0" data-to=".24"><b>Fachada de fácil acesso</b><p>Na Av. Pioneiro José Laurindo da Silva, 237, no Jardim Ouro Verde II, em Sarandi.</p></div>
+          <div class="cap" data-from=".24" data-to=".64"><b>Recepção acolhedora</b><p>Um ambiente calmo e confortável para você e sua família esperarem sem pressa.</p></div>
+          <div class="cap" data-from=".64" data-to="1.01"><b>Consultórios completos</b><p>Equipamentos modernos e iluminação adequada para tratamentos com precisão e segurança.</p></div>
+        </div>
+        <div class="scrub-bar" aria-hidden="true"><i id="b0"></i><i id="b1"></i><i id="b2"></i></div>
+        <span class="scroll-hint">Role a página para percorrer a clínica</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec tour" id="tour">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow reveal">Tour virtual 360°</span>
+      <h2 class="reveal" data-d="1">Visite a clínica antes mesmo de chegar</h2>
+      <p class="reveal" data-d="2">Arraste a imagem para olhar em todas as direções. Comece pela fachada e, em breve, percorra a recepção e os consultórios por dentro.</p>
+    </div>
+    <div class="tour-tabs reveal" role="tablist" aria-label="Ambientes do tour">
+      <button class="tab active" role="tab" aria-selected="true">Fachada</button>
+      <button class="tab" role="tab" aria-selected="false" disabled>Recepção <small>Em breve</small></button>
+      <button class="tab" role="tab" aria-selected="false" disabled>Consultórios <small>Em breve</small></button>
+    </div>
+    <div class="pano-wrap reveal" data-d="1">
+      <div id="pano" role="img" aria-label="Imagem 360° da fachada da Clássica Odontologia em Sarandi"></div>
+      <div class="pano-badge"><b>360°</b>Fachada · Clássica Odontologia</div>
+      <div class="pano-hint" id="panoHint">Arraste para girar</div>
+    </div>
+    <div class="tour-foot">
+      <div class="reveal"><b>Fachada</b>Disponível agora. Veja a entrada e a rua da clínica.</div>
+      <div class="reveal" data-d="1"><b>Recepção</b>Em produção. Tour interno com navegação entre ambientes.</div>
+      <div class="reveal" data-d="2"><b>Consultórios</b>Em produção. Conheça a estrutura onde você será atendido.</div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow reveal">Primeira consulta</span>
+      <h2 class="reveal" data-d="1">Como funciona o seu atendimento</h2>
+    </div>
+    <ol class="flow">
+      <li class="reveal"><b>Fale com a gente</b><p>Mande uma mensagem no WhatsApp e escolha o melhor dia e horário para sua avaliação.</p></li>
+      <li class="reveal" data-d="1"><b>Avaliação e exames</b><p>Examinamos com calma, ouvimos o que incomoda e, se necessário, solicitamos exames de imagem.</p></li>
+      <li class="reveal" data-d="2"><b>Plano de tratamento</b><p>Você recebe um plano claro, com as etapas, prazos e opções explicadas antes de começar.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec contact" id="contato">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow reveal">Contato e localização</span>
+      <h2 class="reveal" data-d="1">Estamos no Jardim Ouro Verde II, em Sarandi</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="info reveal">
+        <div class="info-row"><svg aria-hidden="true"><use href="#ring"/></svg><div><b>WhatsApp</b><a href="https://wa.me/5544991586088" target="_blank" rel="noopener">(44) 99158-6088</a><button class="copy-btn" data-copy="(44) 99158-6088" type="button">Copiar</button><br><span>Atendimento somente por mensagem.</span></div></div>
+        <div class="info-row"><svg aria-hidden="true"><use href="#ring"/></svg><div><b>Endereço</b><span>Av. Pioneiro José Laurindo da Silva, 237<br>Jardim Ouro Verde II · Sarandi - PR · 87114-195</span></div></div>
+        <div class="info-row"><svg aria-hidden="true"><use href="#ring"/></svg><div><b>Horários</b><div class="hours"><span>Segunda a sexta</span><span>Agende pelo WhatsApp</span><span>Sábado</span><span>09:00 – 12:00</span></div></div></div>
+        <div class="info-row"><svg aria-hidden="true"><use href="#ring"/></svg><div><b>Instagram</b><a href="https://www.instagram.com/classica_odontologia/" target="_blank" rel="noopener">@classica_odontologia</a></div></div>
+      </div>
+      <div class="map-card reveal" data-d="1">
+        <canvas id="mapCanvas" aria-hidden="true"></canvas>
+        <div class="pin"><span>Clássica Odontologia</span><i></i></div>
+        <div class="map-cta">
+          <b>Como chegar</b>
+          <span>Próximo à Av. João Marangoni, no Jardim Ouro Verde II.</span>
+          <a class="btn btn-gold" href="https://www.google.com/maps/search/?api=1&amp;query=Av.%20Pioneiro%20Jos%C3%A9%20Laurindo%20da%20Silva%2C%20237%2C%20Sarandi%20-%20PR" target="_blank" rel="noopener">Abrir no Google Maps</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <svg class="bg" viewBox="-50 -50 100 100" aria-hidden="true"><g id="ctaRing"><path class="arc" stroke="rgba(255,255,255,.14)" d="M35.2 14.2 A38 38 0 1 1 -9.8 -36.7"/><path class="arc" stroke="#C4925A" d="M11.7 -36.1 A38 38 0 0 1 37.6 -5.3"/></g></svg>
+  <div class="wrap">
+    <span class="eyebrow reveal">Agende sua avaliação</span>
+    <h2 class="reveal" data-d="1">O primeiro passo para o seu novo sorriso é uma mensagem.</h2>
+    <p class="reveal" data-d="2">Responda no seu tempo. A nossa equipe retorna pelo WhatsApp com os horários disponíveis.</p>
+    <a class="btn btn-gold reveal" data-d="3" href="https://wa.me/5544991586088?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20na%20Cl%C3%A1ssica%20Odontologia." target="_blank" rel="noopener"><svg><use href="#wa"/></svg>Chamar no WhatsApp</a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yr">2026</span> Clássica Odontologia Integrada · Sarandi - PR</span>
+    <span>Tour virtual 360° e site por <a href="https://infinityview360.com.br" target="_blank" rel="noopener">Infinity 360</a></span>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/5544991586088?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20na%20Cl%C3%A1ssica%20Odontologia." target="_blank" rel="noopener" aria-label="Conversar no WhatsApp" style="color:#fff"><svg><use href="#wa"/></svg></a>
+<button class="progress-ring" id="toTop" aria-label="Voltar ao topo">
+  <svg viewBox="-50 -50 100 100"><circle r="38" fill="none" stroke="#D3D7DC" stroke-width="9"/><circle id="progArc" r="38" fill="none" stroke="#1F5A8A" stroke-width="9" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" transform="rotate(-90)"/></svg>
+</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pannellum/2.5.6/pannellum.js"></script>
+<script>
+(function(){
+  var doc=document.documentElement;
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if('IntersectionObserver' in window && !reduce) doc.classList.add('js');
+  document.getElementById('yr').textContent=new Date().getFullYear();
+
+  /* ===== Abertura ===== */
+  var intro=document.getElementById('intro');
+  var word=intro.querySelector('.intro-word');
+  'Clássica'.split('').forEach(function(ch,i){var s=document.createElement('span');s.textContent=ch;s.style.animationDelay=(.55+i*.06)+'s';word.appendChild(s);});
+  var heroReveals=document.querySelectorAll('.hero .reveal');
+  function endIntro(){
+    if(intro.classList.contains('out'))return;
+    intro.classList.add('out');
+    setTimeout(function(){heroReveals.forEach(function(el){el.classList.add('in')});},250);
+    setTimeout(function(){intro.classList.add('gone');},1100);
+  }
+  setTimeout(endIntro, reduce?200:3000);
+  intro.addEventListener('click',endIntro);
+
+  /* ===== Tratamentos ===== */
+  var T=[
+    ['Clínica geral e prevenção','Limpeza, restaurações e check-ups para manter a saúde bucal em dia.',20],
+    ['Estética e lentes de contato dental','Facetas e lentes para harmonizar cor, forma e tamanho dos dentes.',70],
+    ['Clareamento dental','Dentes mais claros com técnica segura, no consultório ou em casa.',120],
+    ['Implantes dentários','Reposição de dentes perdidos com função e aparência naturais.',170],
+    ['Ortodontia e alinhadores','Aparelhos fixos e alinhadores para corrigir a posição dos dentes.',220],
+    ['Odontopediatria','Atendimento leve e paciente para os pequenos criarem bons hábitos.',270],
+    ['Cirurgias e siso','Extrações e pequenas cirurgias com planejamento e cuidado.',320],
+    ['Tratamento de canal','Endodontia para salvar o dente e acabar com a dor.',10],
+    ['Próteses','Coroas, pontes e próteses para devolver mastigação e sorriso.',60]
+  ];
+  var g=document.getElementById('treatGrid');
+  T.forEach(function(t,i){
+    var a=document.createElement('article');a.className='card reveal';a.setAttribute('data-d',String(i%3));
+    a.innerHTML='<svg aria-hidden="true" style="transform:rotate('+t[2]+'deg)"><use href="#ring"/></svg><h3></h3><p></p>';
+    a.querySelector('h3').textContent=t[0];a.querySelector('p').textContent=t[1];
+    g.appendChild(a);
+  });
+  // A rotação do ícone muda no hover: guardamos o ângulo base
+  g.querySelectorAll('.card svg').forEach(function(s){var b=s.style.transform;s.parentNode.addEventListener('mouseenter',function(){s.style.transform=b.replace(/(-?\d+)deg/,function(m,n){return (+n+90)+'deg'})});s.parentNode.addEventListener('mouseleave',function(){s.style.transform=b});});
+
+  /* ===== Revelar ao rolar ===== */
+  if(doc.classList.contains('js')){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.15,rootMargin:'0px 0px -6% 0px'});
+    document.querySelectorAll('.reveal').forEach(function(el){ if(!el.closest('.hero')) io.observe(el); });
+  }
+
+  /* ===== Menu ===== */
+  var burger=document.getElementById('burger'),menu=document.getElementById('menu');
+  burger.addEventListener('click',function(){var o=menu.classList.toggle('open');burger.setAttribute('aria-expanded',o)});
+  menu.addEventListener('click',function(e){if(e.target.tagName==='A'){menu.classList.remove('open');burger.setAttribute('aria-expanded','false')}});
+
+  /* ===== Copiar telefone ===== */
+  document.querySelectorAll('.copy-btn').forEach(function(b){b.addEventListener('click',function(){
+    var t=b.getAttribute('data-copy');
+    function ok(){b.textContent='Copiado';setTimeout(function(){b.textContent='Copiar'},1600)}
+    try{navigator.clipboard.writeText(t).then(ok,function(){sel(b.previousElementSibling);})}catch(e){sel(b.previousElementSibling)}
+    function sel(el){var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r);}
+  })});
+
+  /* ===== Efeitos de rolagem ===== */
+  var header=document.querySelector('header.site'),prog=document.getElementById('progArc'),toTop=document.getElementById('toTop');
+  var heroRing=document.getElementById('heroRing'),ctaRing=document.getElementById('ctaRing'),pimg=document.getElementById('parallaxImg');
+  var scrub=document.getElementById('espaco'),sv=document.getElementById('scrubVideo'),caps=scrub.querySelectorAll('.cap'),bars=[b0,b1,b2];
+  var target=0,cur=0,ticking=false,hint=document.getElementById('panoHint');
+  toTop.addEventListener('click',function(){window.scrollTo({top:0,behavior:reduce?'auto':'smooth'})});
+
+  function onScroll(){
+    var y=window.scrollY,h=doc.scrollHeight-innerHeight;
+    var p=h>0?y/h:0;
+    header.classList.toggle('scrolled',y>10);
+    prog.style.strokeDashoffset=1-p;
+    toTop.classList.toggle('show',y>500);
+    if(!reduce){
+      heroRing.style.transform='rotate('+(y*.08)+'deg)';heroRing.style.transformOrigin='0 0';
+      var cr=ctaRing.closest('section').getBoundingClientRect();
+      ctaRing.style.transform='rotate('+((innerHeight-cr.top)*.12)+'deg)';
+      var pr=pimg.parentNode.getBoundingClientRect();
+      if(pr.bottom>0&&pr.top<innerHeight){var k=(pr.top+pr.height/2-innerHeight/2)/innerHeight;pimg.style.transform='translateY('+(-8+k*-10)+'%)';}
+    }
+    // vídeo controlado pela rolagem
+    var r=scrub.getBoundingClientRect(),span=r.height-innerHeight;
+    var sp=Math.min(1,Math.max(0,-r.top/(span||1)));
+    target=sp;
+    caps.forEach(function(c){var f=+c.dataset.from,t=+c.dataset.to;c.classList.toggle('on',sp>=f&&sp<t)});
+    [[0,.24],[.24,.64],[.64,1]].forEach(function(seg,i){var v=Math.min(1,Math.max(0,(sp-seg[0])/(seg[1]-seg[0])));bars[i].style.setProperty('--p',v)});
+    ticking=false;
+  }
+  window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(onScroll)}},{passive:true});
+  window.addEventListener('resize',onScroll);
+  onScroll();
+
+  // Suaviza o avanço do vídeo
+  var primed=false;
+  function prime(){ if(primed)return; primed=true; var pr=sv.play(); if(pr&&pr.then)pr.then(function(){sv.pause()}).catch(function(){}); }
+  new IntersectionObserver(function(es){if(es[0].isIntersecting)prime()},{rootMargin:'400px'}).observe(scrub);
+  function loop(){
+    if(sv.duration){
+      cur+= (target-cur)*.14;
+      var t=cur*(sv.duration-.05);
+      if(Math.abs(sv.currentTime-t)>.03) sv.currentTime=t;
+    }
+    requestAnimationFrame(loop);
+  }
+  requestAnimationFrame(loop);
+
+  /* ===== Mapa ilustrado ===== */
+  var cv=document.getElementById('mapCanvas');
+  function drawMap(){
+    var w=cv.clientWidth,h=cv.clientHeight,d=window.devicePixelRatio||1;cv.width=w*d;cv.height=h*d;
+    var c=cv.getContext('2d');c.scale(d,d);
+    c.fillStyle='#24344A';c.fillRect(0,0,w,h);
+    c.save();c.translate(w*.56,h*.38);c.rotate(-.42);
+    c.strokeStyle='rgba(255,255,255,.08)';c.lineWidth=1.2;
+    for(var i=-20;i<=20;i++){c.beginPath();c.moveTo(i*46,-h*2);c.lineTo(i*46+80,h*2);c.stroke();}
+    for(var j=-20;j<=20;j++){c.beginPath();c.moveTo(-w*2,j*38);c.lineTo(w*2,j*38);c.stroke();}
+    c.strokeStyle='rgba(255,255,255,.22)';c.lineWidth=7;c.beginPath();c.moveTo(-w*2,4);c.lineTo(w*2,4);c.stroke();
+    c.strokeStyle='rgba(196,146,90,.45)';c.lineWidth=6;c.beginPath();c.moveTo(-w*.55,-h*2);c.lineTo(-w*.4,h*2);c.stroke();
+    c.restore();
+    c.fillStyle='rgba(233,237,242,.55)';c.font='600 11px Quicksand, sans-serif';
+    c.save();c.translate(w*.12,h*.62);c.rotate(-.42);c.fillText('AV. PIONEIRO JOSÉ LAURINDO DA SILVA',0,0);c.restore();
+    c.save();c.translate(w*.2,h*.12);c.rotate(1.15);c.fillText('AV. JOÃO MARANGONI',0,0);c.restore();
+  }
+  drawMap();window.addEventListener('resize',drawMap);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(drawMap);
+
+  /* ===== Tour 360° ===== */
+  function initPano(){
+    if(!window.pannellum){document.getElementById('pano').innerHTML='<p style="padding:24px;color:#E9EDF2">Não foi possível carregar o tour agora. Recarregue a página.</p>';return;}
+    var v=pannellum.viewer('pano',{
+      type:'equirectangular',panorama:'fachada-360.jpg',autoLoad:true,
+      yaw:-110,pitch:-2,hfov:95,minHfov:50,maxHfov:110,
+      autoRotate:-2,autoRotateInactivityDelay:4000,
+      showControls:true,showFullscreenCtrl:true,compass:false,mouseZoom:'fullscreenonly',
+      hotSpots:[{pitch:-1,yaw:-113,cssClass:'clinic-spot',createTooltipFunc:function(div){div.title='Clássica Odontologia'}}]
+    });
+    v.on('mousedown',function(){hint.style.opacity=0});v.on('touchstart',function(){hint.style.opacity=0});
+  }
+  var panoStarted=false;
+  new IntersectionObserver(function(es){if(es[0].isIntersecting&&!panoStarted){panoStarted=true;initPano();}},{rootMargin:'600px'}).observe(document.getElementById('pano'));
+})();
+</script>
+
+</body>
+</html>
